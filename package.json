@@ -26,7 +26,8 @@
     "concurrently": "^5.0.0",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
-    "mongoose": "^5.7.4"
+    "mongoose": "^5.7.4",
+    "redux-devtools-extension": "^2.13.8"
   },
   "devDependencies": {
     "nodemon": "^1.19.3"
