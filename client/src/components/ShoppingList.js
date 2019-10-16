@@ -21,6 +21,7 @@ class ShoppingList extends Component {
     const { items } = this.props.item
     return (
       <Container>
+      <h3>Shopping List</h3>
         <ListGroup>
           <TransitionGroup className="shopping-list">
             { items.map(({ _id, name}) => (
