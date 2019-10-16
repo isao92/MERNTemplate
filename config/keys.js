@@ -1,3 +1,3 @@
 module.exports = {
-  mongoURI: 'mongodb://' + process.env.MLAB_USER + ':' + process.env.MLAB_PASSWORD + '@ds233278.mlab.com:33278/merntemplate'
+  mongoURI: 'mongodb+srv://' + process.env.MONGODBATLAS_USER + ':' + process.env.MONGODBATLAS_PASSWORD + '@cluster0-g0nof.mongodb.net/test?retryWrites=true&w=majority'
 }
