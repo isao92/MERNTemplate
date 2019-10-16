@@ -6,14 +6,13 @@ const initialState = {}
 
 const middleware = [thunk]
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 const store = createStore(
   rootReducer, 
   initialState, 
-  compose(
-    applyMiddleware(...middleware),
-    window.REDUX_DEVTOOLS_EXTENSION_COMPOSE ? window.REDUX_DEVTOOLS_EXTENSION_COMPOSE({
-      // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
-    }) : compose
+  composeEnhancers(
+    applyMiddleware(...middleware)
   )
 )
 
