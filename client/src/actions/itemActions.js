@@ -9,6 +9,9 @@ export const getItems = () => dispatch => {
       type: GET_ITEMS,
       payload: res.data
     }))
+    .catch(err => {
+      console.log(err.response)
+    })
 }
 
 export const addItem = item => dispatch => {
@@ -18,6 +21,9 @@ export const addItem = item => dispatch => {
       type: ADD_ITEM,
       payload: res.data
     }))
+    .catch(err => {
+      console.log(err.response)
+    })
 }
 
 export const deleteItem = id => dispatch => {
