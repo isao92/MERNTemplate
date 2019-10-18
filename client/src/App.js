@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import ShoppingList from './components/ShoppingList'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Home from './components/Home'
 import AppNavbar from './components/AppNavbar'
-import ItemModal from './components/ItemModal'
-import { Container } from 'reactstrap'
+import Booking from './components/guest/Booking'
+import Renting from './components/guest/Renting'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
-import './App.css';
+import './App.css'
 
 import { Provider } from 'react-redux'
 import store from './store'
@@ -18,15 +19,19 @@ class App extends Component {
   }
   render() {
     return (
-      <Provider store={store}>
-        <div className="App">
-          <AppNavbar />
-          <Container>
-            <ItemModal />
-            <ShoppingList />
-          </Container>
-        </div>
-      </Provider>
+      <Router>
+        
+          <Provider store={store}>
+            <div className="App">
+              <AppNavbar />
+              <Switch>
+              <Route path="/" exact component={ Home } />
+              <Route path="/booking" component={ Booking } />
+              <Route path="/renting" component={ Renting } />
+              </Switch>
+            </div>
+          </Provider>
+      </Router>
     )
   }
 }

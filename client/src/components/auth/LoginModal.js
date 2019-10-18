@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import {
   Button,
   Modal,
@@ -11,6 +11,8 @@ import {
   NavLink,
   Alert
 } from 'reactstrap'
+
+import './LoginModal.css'
 
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
@@ -78,8 +80,8 @@ class LoginModal extends Component {
 
   render() {
     return(
-      <div>
-        <NavLink onClick={this.toggle} href="#">
+      <Fragment>
+        <NavLink className="horizontal-fit" onClick={this.toggle} href="#">
           Login
         </NavLink>
 
@@ -119,7 +121,7 @@ class LoginModal extends Component {
             </Form>
           </ModalBody>
         </Modal>
-      </div>
+      </Fragment>
     )
   }
 }

@@ -1,0 +1,9 @@
+.list-none {
+  list-style: none;
+  text-decoration: none;
+  color: white;
+}
+
+.horizontal-fit {
+  float: left;
+}

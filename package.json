@@ -1,7 +1,7 @@
 {
   "name": "merntemplate",
   "version": "1.0.0",
-  "description": "Mern Template Shopping List",
+  "description": "Mern Template",
   "main": "server.js",
   "scripts": {
     "client-install": "npm install --prefix client",
@@ -28,7 +28,8 @@
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.7.4"
+    "mongoose": "^5.7.4",
+    "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
     "nodemon": "^1.19.3"

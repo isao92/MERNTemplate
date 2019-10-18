@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import { Link } from 'react-router-dom'
 
 import {
   Collapse,
@@ -10,10 +11,12 @@ import {
   Container
 } from 'reactstrap'
 
+import './AppNavbar.css'
+
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import RegisterModal from './auth/RegisterModal'
-import LoginModal from './auth/Login.Model'
+import LoginModal from './auth/LoginModal'
 import Logout from './auth/Logout'
 
 class AppNavbar extends Component {
@@ -60,26 +63,31 @@ class AppNavbar extends Component {
     const guestLinks = (
       <Fragment>
         <NavItem>
-          <RegisterModal />
-          <LoginModal />
+          <RegisterModal  className="horizontal-fit" />
+          <LoginModal className="horizontal-fit" />
         </NavItem>
       </Fragment>
     )
 
     return(
     <div>
-      <Navbar color="dark" dark expand="sm" className="mb-5">
-        <Container>
-          <NavbarBrand href="/">ShoppingList</NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              { isAuthenticated ? authLinks : guestLinks }
-            </Nav>
-          </Collapse>
-        </Container>
-
-      </Navbar>
+        <Navbar color="dark" dark expand="sm" className="mb-5">
+          <Container>
+            <NavbarBrand href="/">Own Studios</NavbarBrand>
+            <Link to="/booking">
+              <NavItem className="list-none mr-3 ml-5">Booking</NavItem>
+            </Link>
+            <Link to="/renting">
+              <NavItem className="list-none mr-3">Renting</NavItem>
+            </Link>
+            <NavbarToggler onClick={this.toggle} />
+            <Collapse isOpen={this.state.isOpen} navbar>
+              <Nav className="ml-auto" navbar>
+                { isAuthenticated ? authLinks : guestLinks }
+              </Nav>
+            </Collapse>
+          </Container>
+        </Navbar>
     </div>
     )
   }

@@ -5,8 +5,9 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { connect } from 'react-redux'
 import { getItems, deleteItem } from '../actions/itemActions'
 import PropTypes from 'prop-types'
+import './RentingList.css'
 
-class ShoppingList extends Component {
+class RentingList extends Component {
   
   static propTypes = {
     getItems: PropTypes.func.isRequired,
@@ -27,19 +28,19 @@ class ShoppingList extends Component {
     const { items } = this.props.item
     return (
       <Container>
-      <h3>Shopping List</h3>
+      <h3>Renting List</h3>
         <ListGroup>
-          <TransitionGroup className="shopping-list">
-            { items.map(({ _id, name}) => (
+          <TransitionGroup className="renting-list">
+            { items.map(({ _id, name }) => (
               <CSSTransition key={ _id } timeout={ 500 } classNames="fade">
-                <ListGroupItem>
+                <ListGroupItem id="dark-mode">
                   { this.props.isAuthenticated ? <Button
                     className="remove-btn"
                     color="danger"
                     size="sm"
                     onClick={this.onDeleteClick.bind(this, _id)}
                   >
-                    &times;
+                    Cancel Item Request &times;
                   </Button> : ''}
                   { name }
                 </ListGroupItem>
@@ -57,4 +58,4 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated
 })
 
-export default connect(mapStateToProps, { getItems, deleteItem })(ShoppingList)
+export default connect(mapStateToProps, { getItems, deleteItem })(RentingList)
