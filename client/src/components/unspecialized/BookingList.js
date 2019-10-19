@@ -27,6 +27,7 @@ class BookingList extends Component {
 
   render() {
     const { bookingItems } = this.props.bookingItem
+    
     return (
       <Container>
       <h3>Booking List</h3>
@@ -46,7 +47,10 @@ class BookingList extends Component {
                   { name }
                   <h6>
                     Requested Date: &nbsp;
-                    <Moment format="LL">
+                    <Moment
+                      add={{ days: 1 }}
+                      format={ "LLLL" }
+                    >
                       { requestedDate }
                     </Moment>
                   </h6>
