@@ -11,10 +11,10 @@ import {
 } from 'reactstrap'
 
 import { connect } from 'react-redux'
-import { addItem } from '../actions/itemActions'
+import { addBookingItem } from '../../actions/bookingItemActions'
 import PropTypes from 'prop-types'
 
-class ItemModal extends Component {
+class BookingItemModal extends Component {
   state = {
     modal: false,
     name: ''
@@ -36,12 +36,12 @@ class ItemModal extends Component {
 
   onSubmit = e => {
     e.preventDefault()
-    const newItem = {
+    const newBookingItem = {
       name: this.state.name
     }
 
-    // Add item via additem action
-    this.props.addItem(newItem)
+    // Add booking item via addBookingItem action
+    this.props.addBookingItem(newBookingItem)
 
     // Close modal
     this.toggle()
@@ -54,28 +54,28 @@ class ItemModal extends Component {
           color="dark"
           style={{ marginBottom: '2rem' }}
           onClick={ this.toggle }
-        >Add Item</Button> : '' }
+        >Add Booking Item</Button> : '' }
 
         <Modal
           isOpen={ this.state.modal }
           toggle={ this.toggle }
         >
-          <ModalHeader toggle={ this.toggle }>Add To Renting List</ModalHeader>
+          <ModalHeader toggle={ this.toggle }>Manage Your Booking List</ModalHeader>
           <ModalBody>
             <Form onSubmit={ this.onSubmit }>
               <FormGroup>
-                <Label for="item">Item</Label>
+                <Label for="item">Booking</Label>
                 <Input 
                   type="text"
                   name="name"
-                  id="item"
-                  placeholder="Add renting item"
+                  id="booking-item"
+                  placeholder="Add booking"
                   onChange={ this.onChange }
                 />
                 <Button
                   color="dark"
                   style={{ marginTop: '2rem' }}
-                >Add Item</Button>
+                >Add Booking</Button>
               </FormGroup>
             </Form>
           </ModalBody>
@@ -86,8 +86,8 @@ class ItemModal extends Component {
 }
 
 const mapStateToProps = state => ({
-  item: state.item,
+  bookingItem: state.bookingItem,
   isAuthenticated: state.auth.isAuthenticated
 })
 
-export default connect(mapStateToProps, { addItem })(ItemModal)
+export default connect(mapStateToProps, { addBookingItem })(BookingItemModal)

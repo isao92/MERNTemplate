@@ -3,35 +3,35 @@ import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 import { connect } from 'react-redux'
-import { getItems, deleteItem } from '../actions/itemActions'
+import { getBookingItems, deleteBookingItem } from '../../actions/bookingItemActions'
 import PropTypes from 'prop-types'
 import './RentingList.css'
 
-class RentingList extends Component {
+class BookingList extends Component {
   
   static propTypes = {
-    getItems: PropTypes.func.isRequired,
-    item: PropTypes.object.isRequired,
+    getBookingItems: PropTypes.func.isRequired,
+    bookingItem: PropTypes.object.isRequired,
     isAuthenticated: PropTypes.bool
   }
 
   // Lifecycle method
   componentDidMount() {
-    this.props.getItems()
+    this.props.getBookingItems()
   }
 
   onDeleteClick = (id) => {
-    this.props.deleteItem(id)
+    this.props.deleteBookingItem(id)
   }
 
   render() {
-    const { items } = this.props.item
+    const { bookingItems } = this.props.bookingItem
     return (
       <Container>
-      <h3>Renting List</h3>
+      <h3>Booking List</h3>
         <ListGroup>
-          <TransitionGroup className="renting-list">
-            { items.map(({ _id, name }) => (
+          <TransitionGroup className="booking-list">
+            { bookingItems.map(({ _id, name }) => (
               <CSSTransition key={ _id } timeout={ 500 } classNames="fade">
                 <ListGroupItem id="dark-mode">
                   { this.props.isAuthenticated ? <Button
@@ -40,7 +40,7 @@ class RentingList extends Component {
                     size="sm"
                     onClick={this.onDeleteClick.bind(this, _id)}
                   >
-                    Cancel Item Request &times;
+                    Cancel Booking Request &times;
                   </Button> : ''}
                   { name }
                 </ListGroupItem>
@@ -54,8 +54,8 @@ class RentingList extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  item: state.item,
+  bookingItem: state.bookingItem,
   isAuthenticated: state.auth.isAuthenticated
 })
 
-export default connect(mapStateToProps, { getItems, deleteItem })(RentingList)
+export default connect(mapStateToProps, { getBookingItems, deleteBookingItem })(BookingList)

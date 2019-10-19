@@ -1,7 +1,14 @@
 import axios from 'axios'
-import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, ITEMS_LOADING } from './types'
+import { 
+  GET_ITEMS,
+  ADD_ITEM,
+  DELETE_ITEM,
+  ITEMS_LOADING
+} from './types'
 import { tokenConfig } from './authActions'
 import { returnErrors } from './errorActions'
+
+// RENTING ITEMS SECTION
 
 export const getItems = () => dispatch => {
   dispatch(setItemsLoading())
@@ -40,3 +47,5 @@ export const setItemsLoading = () => {
     type: ITEMS_LOADING
   }
 }
+
+// END OF ITEMS SECTION

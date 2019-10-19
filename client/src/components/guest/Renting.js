@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-// import RentingList from './components/RentingList'
+import RentingList from '../unspecialized/RentingList'
 // import AppNavbar from './components/AppNavbar'
-// import ItemModal from './components/ItemModal'
+import ItemModal from '../unspecialized/ItemModal'
 // import ActionCall from './components/ActionCall'
-// import { Container } from 'reactstrap'
+import { Container } from 'reactstrap'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 // import './App.css'
@@ -21,7 +21,10 @@ class Renting extends Component {
     return (
       <Provider store={store}>
         <div className="Renting">
-          Renting
+          <Container>
+            <ItemModal />
+            <RentingList />
+          </Container>
         </div>
       </Provider>
     )

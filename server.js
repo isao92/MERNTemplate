@@ -19,6 +19,7 @@ mongoose
 
 // Use Routes
 app.use('/api/items', require('./routes/api/items'))
+app.use('/api/booking-items', require('./routes/api/booking-items'))
 app.use('/api/users', require('./routes/api/users'))
 app.use('/api/auth', require('./routes/api/auth'))
 
