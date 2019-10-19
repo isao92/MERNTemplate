@@ -10,6 +10,15 @@ const BookingItemSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  status: {
+    type: String
+  },
+  requestedDate: {
+    type: Date
+  },
+  requestedEndDate: {
+    type: Date
   }
 })
 

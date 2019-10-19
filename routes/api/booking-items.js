@@ -19,7 +19,10 @@ router.get('/', (req, res) => {
 // @access Private
 router.post('/', auth, (req, res) => {
   const newBookingItem = new BookingItem({
-    name: req.body.name
+    name: req.body.name,
+    status: req.body.status,
+    requestedDate: req.body.requestedDate,
+    requestedEndDate: req.body.requestedEndDate
   })
 
   newBookingItem.save().then(bookingItem => res.json(bookingItem))

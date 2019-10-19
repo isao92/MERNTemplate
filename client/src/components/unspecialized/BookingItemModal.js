@@ -17,7 +17,8 @@ import PropTypes from 'prop-types'
 class BookingItemModal extends Component {
   state = {
     modal: false,
-    name: ''
+    name: '',
+    requestedDate: ''
   }
 
   static propTypes = {
@@ -37,7 +38,8 @@ class BookingItemModal extends Component {
   onSubmit = e => {
     e.preventDefault()
     const newBookingItem = {
-      name: this.state.name
+      name: this.state.name,
+      requestedDate: this.state.requestedDate
     }
 
     // Add booking item via addBookingItem action
@@ -70,6 +72,13 @@ class BookingItemModal extends Component {
                   name="name"
                   id="booking-item"
                   placeholder="Add booking"
+                  onChange={ this.onChange }
+                />
+                <Input 
+                  type="date"
+                  name="requestedDate"
+                  id="booking-date"
+                  placeholder="Starting Date"
                   onChange={ this.onChange }
                 />
                 <Button

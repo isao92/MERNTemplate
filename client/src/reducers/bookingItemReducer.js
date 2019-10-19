@@ -1,4 +1,9 @@
-import { GET_BOOKING_ITEMS, ADD_BOOKING_ITEM, DELETE_BOOKING_ITEM, BOOKING_ITEMS_LOADING } from '../actions/types'
+import {
+  GET_BOOKING_ITEMS,
+  ADD_BOOKING_ITEM, 
+  DELETE_BOOKING_ITEM,
+  BOOKING_ITEMS_LOADING 
+} from '../actions/types'
 
 const initialState = {
   bookingItems: [],
@@ -16,7 +21,7 @@ export default function(state = initialState, action) {
     case DELETE_BOOKING_ITEM:
       return {
         ...state,
-        bookingItems: state.bookinItems.filter(bookingItem => bookingItem._id !== action.payload)
+        bookingItems: state.bookingItems.filter(bookingItem => bookingItem._id !== action.payload)
       }
     case ADD_BOOKING_ITEM:
       return {
