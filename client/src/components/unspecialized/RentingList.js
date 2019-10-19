@@ -3,6 +3,7 @@ import { Container, ListGroup, ListGroupItem, Button } from 'reactstrap'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 import { connect } from 'react-redux'
+import Moment from 'react-moment'
 import { getItems, deleteItem } from '../../actions/itemActions'
 import PropTypes from 'prop-types'
 import './RentingList.css'
@@ -31,7 +32,7 @@ class RentingList extends Component {
       <h3>Renting List</h3>
         <ListGroup>
           <TransitionGroup className="renting-list">
-            { items.map(({ _id, name }) => (
+            { items.map(({ _id, name, requestedDate, requestedDays }) => (
               <CSSTransition key={ _id } timeout={ 500 } classNames="fade">
                 <ListGroupItem id="dark-mode">
                   { this.props.isAuthenticated ? <Button
@@ -43,6 +44,17 @@ class RentingList extends Component {
                     Cancel Item Request &times;
                   </Button> : ''}
                   { name }
+                  <h6>
+                    Requested Date: &nbsp;
+                    <Moment
+                      add={{ days: 1 }}
+                      format={ "LL" }
+                    >
+                      { requestedDate }
+                    </Moment>
+                    &nbsp; || &nbsp;
+                    Number of Days: { requestedDays }
+                  </h6>
                 </ListGroupItem>
               </CSSTransition>
             ))}

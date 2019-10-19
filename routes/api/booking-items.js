@@ -22,7 +22,7 @@ router.post('/', auth, (req, res) => {
     name: req.body.name,
     status: req.body.status,
     requestedDate: req.body.requestedDate,
-    requestedEndDate: req.body.requestedEndDate
+    requestedDays: req.body.requestedDays
   })
 
   newBookingItem.save().then(bookingItem => res.json(bookingItem))

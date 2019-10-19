@@ -17,7 +17,9 @@ import PropTypes from 'prop-types'
 class ItemModal extends Component {
   state = {
     modal: false,
-    name: ''
+    name: '',
+    requestedDate: '',
+    requestedDays: ''
   }
 
   static propTypes = {
@@ -37,7 +39,9 @@ class ItemModal extends Component {
   onSubmit = e => {
     e.preventDefault()
     const newItem = {
-      name: this.state.name
+      name: this.state.name,
+      requestedDate: this.state.requestedDate,
+      requestedDays: this.state.requestedDays
     }
 
     // Add item via additem action
@@ -70,6 +74,19 @@ class ItemModal extends Component {
                   name="name"
                   id="item"
                   placeholder="Add renting item"
+                  onChange={ this.onChange }
+                /><Input 
+                  type="date"
+                  name="requestedDate"
+                  id="renting-date"
+                  placeholder="Starting Date"
+                  onChange={ this.onChange }
+                />
+                <Input 
+                  type="number"
+                  name="requestedDays"
+                  id="renting-days"
+                  placeholder="Number of Days"
                   onChange={ this.onChange }
                 />
                 <Button

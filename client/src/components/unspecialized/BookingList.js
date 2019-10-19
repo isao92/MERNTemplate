@@ -33,7 +33,7 @@ class BookingList extends Component {
       <h3>Booking List</h3>
         <ListGroup>
           <TransitionGroup className="booking-list">
-            { bookingItems.map(({ _id, name, requestedDate }) => (
+            { bookingItems.map(({ _id, name, requestedDate, requestedDays }) => (
               <CSSTransition key={ _id } timeout={ 500 } classNames="fade">
                 <ListGroupItem id="dark-mode">
                   { this.props.isAuthenticated ? <Button
@@ -49,10 +49,12 @@ class BookingList extends Component {
                     Requested Date: &nbsp;
                     <Moment
                       add={{ days: 1 }}
-                      format={ "LLLL" }
+                      format={ "LL" }
                     >
                       { requestedDate }
                     </Moment>
+                    &nbsp; || &nbsp;
+                    Number of Days: { requestedDays }
                   </h6>
                 </ListGroupItem>
               </CSSTransition>

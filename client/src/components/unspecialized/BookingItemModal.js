@@ -18,7 +18,8 @@ class BookingItemModal extends Component {
   state = {
     modal: false,
     name: '',
-    requestedDate: ''
+    requestedDate: '',
+    requestedDays: ''
   }
 
   static propTypes = {
@@ -39,7 +40,8 @@ class BookingItemModal extends Component {
     e.preventDefault()
     const newBookingItem = {
       name: this.state.name,
-      requestedDate: this.state.requestedDate
+      requestedDate: this.state.requestedDate,
+      requestedDays: this.state.requestedDays
     }
 
     // Add booking item via addBookingItem action
@@ -79,6 +81,13 @@ class BookingItemModal extends Component {
                   name="requestedDate"
                   id="booking-date"
                   placeholder="Starting Date"
+                  onChange={ this.onChange }
+                />
+                <Input 
+                  type="number"
+                  name="requestedDays"
+                  id="booking-days"
+                  placeholder="Number of Days"
                   onChange={ this.onChange }
                 />
                 <Button
