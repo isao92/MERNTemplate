@@ -19,6 +19,9 @@ const BookingItemSchema = new Schema({
   },
   requestedDays: {
     type: Number
+  },
+  userRequesting: {
+    type: String
   }
 })
 

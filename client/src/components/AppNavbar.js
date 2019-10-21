@@ -31,6 +31,7 @@ class AppNavbar extends Component {
     auth: PropTypes.object.isRequired
   }
 
+  // Toggle Functionality
   state = {
     isOpen: false
   }

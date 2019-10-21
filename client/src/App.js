@@ -12,7 +12,6 @@ import { Provider } from 'react-redux'
 import store from './store'
 import { loadUser } from './actions/authActions'
 
-
 class App extends Component {
   componentDidMount() {
     store.dispatch(loadUser())
@@ -20,7 +19,6 @@ class App extends Component {
   render() {
     return (
       <Router>
-        
           <Provider store={store}>
             <div className="App">
               <AppNavbar />

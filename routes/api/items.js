@@ -22,7 +22,8 @@ router.post('/', auth, (req, res) => {
     name: req.body.name,
     status: req.body.status,
     requestedDate: req.body.requestedDate,
-    requestedDays: req.body.requestedDays
+    requestedDays: req.body.requestedDays,
+    userRequesting: req.body.userRequesting
   })
 
   newItem.save().then(item => res.json(item))

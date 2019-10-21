@@ -19,6 +19,9 @@ const ItemSchema = new Schema({
   },
   requestedDays: {
     type: Number
+  },
+  userRequesting: {
+    type: String
   }
 })
 

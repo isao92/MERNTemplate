@@ -12,6 +12,7 @@ import {
 
 import { connect } from 'react-redux'
 import { addItem } from '../../actions/itemActions'
+import { loadUser } from '../../actions/authActions'
 import PropTypes from 'prop-types'
 
 class ItemModal extends Component {
@@ -23,7 +24,14 @@ class ItemModal extends Component {
   }
 
   static propTypes = {
-    isAuthenticated: PropTypes.bool
+    loadUser: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool,
+    auth: PropTypes.object.isRequired
+  }
+  
+  // Lifecycle method
+  componentDidMount() {
+    this.props.loadUser()
   }
 
   toggle = () => {
@@ -41,7 +49,8 @@ class ItemModal extends Component {
     const newItem = {
       name: this.state.name,
       requestedDate: this.state.requestedDate,
-      requestedDays: this.state.requestedDays
+      requestedDays: this.state.requestedDays,
+      userRequesting: this.props.auth.user.email
     }
 
     // Add item via additem action
@@ -58,17 +67,20 @@ class ItemModal extends Component {
           color="dark"
           style={{ marginBottom: '2rem' }}
           onClick={ this.toggle }
-        >Add Item</Button> : '' }
+        >Add Item </Button> : '' }
 
         <Modal
           isOpen={ this.state.modal }
           toggle={ this.toggle }
         >
-          <ModalHeader toggle={ this.toggle }>Add To Renting List</ModalHeader>
+          <ModalHeader toggle={ this.toggle }>
+            Add To Renting List
+          </ModalHeader>
+
           <ModalBody>
             <Form onSubmit={ this.onSubmit }>
               <FormGroup>
-                <Label for="item">Item</Label>
+                <Label for="item">Rental Item</Label>
                 <Input 
                   type="text"
                   name="name"
@@ -104,7 +116,8 @@ class ItemModal extends Component {
 
 const mapStateToProps = state => ({
   item: state.item,
-  isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated,
+  auth: state.auth
 })
 
-export default connect(mapStateToProps, { addItem })(ItemModal)
+export default connect(mapStateToProps, { addItem, loadUser })(ItemModal)
